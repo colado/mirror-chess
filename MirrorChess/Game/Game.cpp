@@ -7,7 +7,6 @@
 //
 
 #include "Game.hpp"
-#include <iostream>
 
 using namespace sf;
 
@@ -68,7 +67,6 @@ void Game::render()
     
         if (isMoving)
         {
-            std::cout << "hello" << std::endl;
             blackKnight.setPosition(mousePos.x - dx, mousePos.y - dy);
         }
         handleInput();
