@@ -42,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		C3081252244EFE75007B6046 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
+		C33CF0C4245C3DF300C0A451 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		C3B24071245042730035FD93 /* Game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Game.cpp; path = Game/Game.cpp; sourceTree = "<group>"; };
 		C3B24072245042730035FD93 /* Game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Game.hpp; path = Game/Game.hpp; sourceTree = "<group>"; };
 		C3B2407524506A730035FD93 /* Piece.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Piece.cpp; path = Piece/Piece.cpp; sourceTree = "<group>"; };
@@ -99,6 +100,7 @@
 				C3B2407524506A730035FD93 /* Piece.cpp */,
 				C3B2407624506A730035FD93 /* Piece.hpp */,
 				C3B24072245042730035FD93 /* Game.hpp */,
+				C33CF0C4245C3DF300C0A451 /* Constants.h */,
 			);
 			path = MirrorChess;
 			sourceTree = "<group>";

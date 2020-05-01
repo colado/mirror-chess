@@ -10,22 +10,24 @@
 #define Game_hpp
 
 #include <SFML/Graphics.hpp>
+#include "Piece.hpp"
 
 class Game
 {
 private:
     sf::RenderWindow* windowPtr;
     sf::Sprite board;
-    sf::Sprite blackKnight;
     sf::Vector2i mousePos;
     int dx;
     int dy;
     void render();
     bool isMoving = false;
+    void update();
+    Piece knight;
     
 public:
+    Game();
     void init();
-    void update();
     void handleInput();
 };
 

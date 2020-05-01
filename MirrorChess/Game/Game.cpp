@@ -7,11 +7,20 @@
 //
 
 #include "Game.hpp"
+#include <iostream>
 
 using namespace sf;
 
+Game::Game(): knight("black", 0, 0, "black-knight")
+{
+    
+}
+
 void Game::init()
 {
+    Texture t1;
+    t1.loadFromFile("Assets/chess-board.png");
+    board.setTexture(t1);
     render();
 }
 
@@ -33,8 +42,9 @@ void Game::handleInput()
                 if (event.key.code == Mouse::Left)
                 {
                     isMoving = true;
-                    dx = mousePos.x - blackKnight.getPosition().x;
-                    dy = mousePos.y - blackKnight.getPosition().y;
+                    std::cout << knight.getPosition().x << std::endl;
+                    dx = mousePos.x - knight.getPosition().x;
+                    dy = mousePos.y - knight.getPosition().y;
                 }
                 break;
                 
@@ -54,29 +64,26 @@ void Game::render()
     
     windowPtr = &window;
     
-    Texture t1;
-    Texture t2;
-    t1.loadFromFile("Assets/chess-board.png");
-    t2.loadFromFile("Assets/black-knight.png");
-    board.setTexture(t1);
-    blackKnight.setTexture(t2);
-    
     while (window.isOpen())
     {
-        
-    
-        if (isMoving)
-        {
-            blackKnight.setPosition(mousePos.x - dx, mousePos.y - dy);
-        }
         handleInput();
+        update();
         
         window.clear();
-        
+                
         window.draw(board);
-        window.draw(blackKnight);
+        window.draw(knight.getSpriteRef());
         
         
         window.display();
+    }
+}
+
+void Game::update()
+{
+    // here goes logic to find piece and move it
+    if (isMoving)
+    {
+        knight.setPosition(mousePos.x - dx, mousePos.y - dy);
     }
 }

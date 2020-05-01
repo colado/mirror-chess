@@ -10,15 +10,27 @@
 #define Piece_hpp
 
 #include <stdio.h>
+#include <SFML/Graphics.hpp>
+
+using namespace std;
+using namespace sf;
 
 class Piece
 {
 private:
+    // TODO: Replace for an enum of only "white" or "black"
+    string color;
+    string spriteURI;
     int posX;
     int posY;
+    Texture texture;
+    Sprite sprite;
     
 public:
-    void update();
+    Piece(string color, int posX, int posY, string spriteURI);
+    void setPosition(int x, int y);
+    Vector2f getPosition();
+    Sprite& getSpriteRef();
 };
 
-#endif /* Piece_hpp */
+#endif /* Piece_*hpp */
