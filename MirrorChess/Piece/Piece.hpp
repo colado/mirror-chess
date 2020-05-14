@@ -18,17 +18,20 @@ using namespace sf;
 class Piece
 {
 private:
+    string type;
     // TODO: Replace for an enum of only "white" or "black"
     string color;
     string spriteURI;
+    int dx = 0;
+    int dy = 0;
     int posX;
     int posY;
     Texture texture;
     Sprite sprite;
     
 public:
-    Piece(string color, int posX, int posY, string spriteURI);
-    void setPosition(int x, int y);
+    Piece(string color, string type, int posX, int posY);
+    void setPosition(int mousePosX, int mousePosY);
     Vector2f getPosition();
     Sprite& getSpriteRef();
 };

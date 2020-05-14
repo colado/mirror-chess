@@ -2,13 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:../../../Pictures/chess-board.png">
-   </FileRef>
-   <Group
-      location = "container:"
-      name = "Assets">
-   </Group>
-   <FileRef
       location = "self:MirrorChess.xcodeproj">
    </FileRef>
 </Workspace>

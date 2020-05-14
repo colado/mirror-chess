@@ -11,19 +11,19 @@
 
 #include <SFML/Graphics.hpp>
 #include "Piece.hpp"
+#include "Board.hpp"
+
+using namespace sf;
 
 class Game
 {
 private:
-    sf::RenderWindow* windowPtr;
-    sf::Sprite board;
-    sf::Vector2i mousePos;
-    int dx;
-    int dy;
+    RenderWindow* windowPtr;
+    Board board;
+    Vector2i mousePos;
     void render();
     bool isMoving = false;
     void update();
-    Piece knight;
     
 public:
     Game();
