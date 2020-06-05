@@ -26,10 +26,11 @@ private:
     Piece bishop;
     Texture bT;
     Sprite bS;
+    Piece* activePiece = nullptr;
     
 public:
     Board(string spriteURI);
-    void update(int mousePosX, int mousePosY);
+    void update(int mousePosX, int mousePosY, bool isMoveFinished);
     Sprite& getSpriteRef();
     Sprite& getPieceRef(string color, int index);
     int getNumberOfPieces();

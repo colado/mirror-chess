@@ -17,7 +17,7 @@ const int boardSize = 800;
 const int cellSize = 100;
 const int nCellsPerRow = 8;
 const int piecesPerPlayer = 16;
-const int pieceSpriteSize = 87;
+const int pieceSpriteSize = 86;
 const int pieceSpriteOffset = (cellSize - pieceSpriteSize) / 2;
 const string pieces[]
 {

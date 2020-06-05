@@ -19,24 +19,38 @@ Board::Board(string spriteURI): bishop("white", "bishop", 200, 500)
     {
         if (i < nCellsPerRow)
         {
-            whitePieces.push_back(new Piece("white", pieces[i], i * cellSize + pieceSpriteOffset, pieceSpriteOffset));
+            blackPieces.push_back(new Piece("black", pieces[i], i * cellSize, 0));
         }
         else
         {
-            whitePieces.push_back(new Piece("white", pawn, (i - nCellsPerRow) * cellSize, cellSize + pieceSpriteOffset));
+            blackPieces.push_back(new Piece("black", pawn, (i - nCellsPerRow) * cellSize, cellSize));
         }
     }
 }
 
-void Board::update(int mousePosX, int mousePosY)
+// Not sure about this implementation. Not sure how to avoid dragging multiple pieces
+void Board::update(int mousePosX, int mousePosY, bool isMoveFinished)
 {
-    //    for (int i = 0; i < whitePieces.size(); i++)
-    //    {
-    //        if (whitePieces[i].getPosition().x - )
-    //        {
-    //
-    //        }
-    //    }
+    if (isMoveFinished)
+    {
+        activePiece->centerSprite(mousePosX - (mousePosX % cellSize), mousePosY - (mousePosY % cellSize));
+        activePiece = nullptr;
+    }
+    else if (activePiece == nullptr)
+    {
+        for (int i = 0; i < blackPieces.size(); i++)
+        {
+            if (blackPieces[i]->contains(mousePosX, mousePosY))
+            {
+                activePiece = blackPieces[i];
+                break;
+            }
+        }
+    }
+    else
+    {
+        activePiece->setPosition(mousePosX, mousePosY);
+    }
 }
 
 Sprite& Board::getSpriteRef()
@@ -47,11 +61,11 @@ Sprite& Board::getSpriteRef()
 
 Sprite& Board::getPieceRef(string color, int index)
 {
-    Sprite& spriteRef = whitePieces[index]->getSpriteRef();
+    Sprite& spriteRef = blackPieces[index]->getSpriteRef();
     return spriteRef;
 }
 
 int Board::getNumberOfPieces()
 {
-    return whitePieces.size();
+    return blackPieces.size();
 }

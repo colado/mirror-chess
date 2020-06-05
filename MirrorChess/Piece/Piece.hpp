@@ -34,6 +34,8 @@ public:
     void setPosition(int mousePosX, int mousePosY);
     Vector2f getPosition();
     Sprite& getSpriteRef();
+    bool contains(int mousePosX, int mousePosY);
+    void centerSprite(int posX, int posY);
 };
 
 #endif /* Piece_*hpp */

@@ -15,6 +15,13 @@
 
 using namespace sf;
 
+enum GameState
+{
+    moving,
+    finished,
+    notMoving
+};
+
 class Game
 {
 private:
@@ -22,7 +29,7 @@ private:
     Board board;
     Vector2i mousePos;
     void render();
-    bool isMoving = false;
+    GameState gameState = notMoving;
     void update();
     
 public:
