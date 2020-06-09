@@ -23,14 +23,15 @@ private:
     Sprite sprite;
     vector<Piece*> whitePieces;
     vector<Piece*> blackPieces;
-    Piece bishop;
     Texture bT;
     Sprite bS;
-    Piece* activePiece = nullptr;
+    Piece* activePiece;
+    Player turn;
     
 public:
     Board(string spriteURI);
-    void update(int mousePosX, int mousePosY, bool isMoveFinished);
+    void update(int mousePosX, int mousePosY, bool isMousePressed
+                );
     Sprite& getSpriteRef();
     Sprite& getPieceRef(string color, int index);
     int getNumberOfPieces();

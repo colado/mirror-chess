@@ -15,11 +15,11 @@
 
 using namespace sf;
 
-enum GameState
+enum class InputState
 {
-    moving,
-    finished,
-    notMoving
+    Pressed,
+    Released,
+    Inactive
 };
 
 class Game
@@ -29,7 +29,7 @@ private:
     Board board;
     Vector2i mousePos;
     void render();
-    GameState gameState = notMoving;
+    InputState inputState;
     void update();
     
 public:

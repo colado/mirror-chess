@@ -13,6 +13,12 @@
 
 using namespace std;
 
+enum class Player
+{
+    White,
+    Black
+};
+
 const int boardSize = 800;
 const int cellSize = 100;
 const int nCellsPerRow = 8;
@@ -24,6 +30,10 @@ const string pieces[]
     "rook", "knight", "bishop", "queen", "king", "bishop", "knight", "rook"
 };
 const string pawn = "pawn";
+const int initialBlackMainRowYCoord = 0;
+const int initialBlackPawnRowYCoord = 100;
+const int initialWhitePawnRowYCoord = 600;
+const int initialWhiteMainRowYCoord = 700;
 
 //const string whiteTowerALoc = "white-tower-a";
 //const string whiteTowerBLoc = "white-tower-b";

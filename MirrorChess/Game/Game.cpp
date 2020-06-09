@@ -40,12 +40,12 @@ void Game::handleInput()
             case Event::MouseButtonPressed:
                 if (event.key.code == Mouse::Left)
                 {
-                    gameState = moving;
+                    inputState = InputState::Pressed;
                 }
                 break;
                 
             case Event::MouseButtonReleased:
-                gameState = finished;
+                inputState = InputState::Released;
                 break;
                 
             default:
@@ -72,6 +72,10 @@ void Game::render()
         {
             window.draw(board.getPieceRef("black", i));
         }
+        for (int i = 0; i < board.getNumberOfPieces(); i++)
+        {
+            window.draw(board.getPieceRef("white", i));
+        }
         
         window.display();
     }
@@ -80,15 +84,15 @@ void Game::render()
 void Game::update()
 {
     // here goes logic to find piece and move it
-    switch (gameState)
+    switch (inputState)
     {
-        case moving:
+        case InputState::Pressed:
             board.update(mousePos.x, mousePos.y, false);
             break;
             
-        case finished:
+        case InputState::Released:
             board.update(mousePos.x, mousePos.y, true);
-            gameState = notMoving;
+            inputState = InputState::Inactive;
             break;
             
         default:

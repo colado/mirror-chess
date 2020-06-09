@@ -44,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		C3081252244EFE75007B6046 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
+		C3365D52248B734600E4FB98 /* Settings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		C33CF0C4245C3DF300C0A451 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		C33CF0C6245C546900C0A451 /* utils.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = utils.cpp; sourceTree = "<group>"; };
 		C33CF0C7245C546900C0A451 /* utils.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = utils.hpp; sourceTree = "<group>"; };
@@ -104,6 +105,7 @@
 				C3B4E9DA244E1FD80073691E /* main.cpp */,
 				C3B24071245042730035FD93 /* Game.cpp */,
 				C33CF0C92461D04300C0A451 /* Board.cpp */,
+				C3365D52248B734600E4FB98 /* Settings.h */,
 				C33CF0CA2461D04300C0A451 /* Board.hpp */,
 				C3B2407524506A730035FD93 /* Piece.cpp */,
 				C3B2407624506A730035FD93 /* Piece.hpp */,
