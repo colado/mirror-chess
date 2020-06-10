@@ -17,11 +17,11 @@ Board::Board(string spriteURI): activePiece(nullptr), turn(Player::White)
     {
         if (i < nCellsPerRow)
         {
-            blackPieces.push_back(new Piece("black", pieces[i], i * cellSize, initialBlackMainRowYCoord));
+            blackPieces.push_back(new Piece("black", pieces[i], Vector2i(i * cellSize, initialBlackMainRowYCoord)));
         }
         else
         {
-            blackPieces.push_back(new Piece("black", pawn, (i - nCellsPerRow) * cellSize, initialBlackPawnRowYCoord));
+            blackPieces.push_back(new Piece("black", pawn, Vector2i((i - nCellsPerRow) * cellSize, initialBlackPawnRowYCoord)));
         }
     }
     
@@ -29,43 +29,52 @@ Board::Board(string spriteURI): activePiece(nullptr), turn(Player::White)
     {
         if (i < nCellsPerRow)
         {
-            whitePieces.push_back(new Piece("white", pieces[i], i * cellSize, initialWhiteMainRowYCoord));
+            whitePieces.push_back(new Piece("white", pieces[i], Vector2i(i * cellSize, initialWhiteMainRowYCoord)));
         }
         else
         {
-            whitePieces.push_back(new Piece("white", pawn, (i - nCellsPerRow) * cellSize, initialWhitePawnRowYCoord));
+            whitePieces.push_back(new Piece("white", pawn, Vector2i((i - nCellsPerRow) * cellSize, initialWhitePawnRowYCoord)));
         }
     }
 }
 
 // Not sure about this implementation. Not sure how to avoid dragging multiple pieces
-void Board::update(int mousePosX, int mousePosY, bool isMousePressed)
+void Board::update(Vector2i mousePos, bool isMousePressed)
 {
-    if (isMousePressed && activePiece)
-    {
-        activePiece->centerSprite(mousePosX - (mousePosX % cellSize), mousePosY - (mousePosY % cellSize));
-        activePiece = nullptr;
-        turn = turn == Player::White ? Player::Black : Player::White;
-    }
-    else if (activePiece == nullptr)
+    if (activePiece == nullptr)
     {
         int nPieces = turn == Player::White ? (int)whitePieces.size() : (int)blackPieces.size();
         for (int i = 0; i < nPieces; i++)
         {
             bool clickIsInRange = turn == Player::White
-            ? whitePieces[i]-> contains(mousePosX, mousePosY)
-            : blackPieces[i]-> contains(mousePosX, mousePosY);
+            ? whitePieces[i]-> contains(mousePos)
+            : blackPieces[i]-> contains(mousePos);
             
             if (clickIsInRange)
             {
                 activePiece = turn == Player::White ? whitePieces[i] : blackPieces [i];
-                break;
+                activePieceOrigPos = Vector2i(activePiece->getPosition());
             }
         }
     }
-    else if (activePiece && !isMousePressed)
+    
+    if (isMousePressed && activePiece)
     {
-        activePiece->setPosition(mousePosX, mousePosY);
+        activePiece->setPosition(mousePos);
+    }
+    else if (!isMousePressed && activePiece)
+    {
+        if (false)
+        {
+            activePiece->setPosition(activePieceOrigPos);
+            activePiece = nullptr;
+        }
+        else
+        {
+            activePiece->centerInCell(mousePos);
+            activePiece = nullptr;
+            turn = turn == Player::White ? Player::Black : Player::White;
+        }
     }
 }
 

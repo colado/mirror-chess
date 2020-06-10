@@ -83,15 +83,14 @@ void Game::render()
 
 void Game::update()
 {
-    // here goes logic to find piece and move it
     switch (inputState)
     {
         case InputState::Pressed:
-            board.update(mousePos.x, mousePos.y, false);
+            board.update(mousePos, true);
             break;
             
         case InputState::Released:
-            board.update(mousePos.x, mousePos.y, true);
+            board.update(mousePos, false);
             inputState = InputState::Inactive;
             break;
             

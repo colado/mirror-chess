@@ -22,20 +22,19 @@ private:
     // TODO: Replace for an enum of only "white" or "black"
     string color;
     string spriteURI;
-    int dx = 0;
-    int dy = 0;
-    int posX;
-    int posY;
+    Vector2i mouseOffset;
+    Vector2i position;
     Texture texture;
     Sprite sprite;
     
 public:
-    Piece(string color, string type, int posX, int posY);
-    void setPosition(int mousePosX, int mousePosY);
-    Vector2f getPosition();
+    Piece(string color, string type, Vector2i position);
+    void setPosition(Vector2i position);
     Sprite& getSpriteRef();
-    bool contains(int mousePosX, int mousePosY);
-    void centerSprite(int posX, int posY);
+    Vector2i getPosition();
+    bool contains(Vector2i position);
+    bool validateMove(Vector2i position);
+    void centerInCell(Vector2i position);
 };
 
 #endif /* Piece_*hpp */

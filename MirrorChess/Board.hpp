@@ -26,12 +26,12 @@ private:
     Texture bT;
     Sprite bS;
     Piece* activePiece;
+    Vector2i activePieceOrigPos;
     Player turn;
     
 public:
     Board(string spriteURI);
-    void update(int mousePosX, int mousePosY, bool isMousePressed
-                );
+    void update(Vector2i position, bool isMousePressed);
     Sprite& getSpriteRef();
     Sprite& getPieceRef(string color, int index);
     int getNumberOfPieces();
